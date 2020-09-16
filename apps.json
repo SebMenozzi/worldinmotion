@@ -1,0 +1,86 @@
+[
+  {
+    "name": "spotify",
+    "label": "Spotify Charts",
+    "size": "50px",
+    "image": "./assets/img/apps/spotify.png"
+  },
+  {
+    "name": "google",
+    "label": "Google Trends",
+    "size": "48px",
+    "image": "./assets/img/apps/google.png"
+  },
+  {
+    "name": "youtube",
+    "label": "Youtube Charts",
+    "size": "35px",
+    "image": "./assets/img/apps/youtube.png"
+  },
+  {
+    "name": "bitcoin",
+    "label": "Bitcoin",
+    "size": "50px",
+    "image": "./assets/img/apps/bitcoin.png"
+  },
+  {
+    "name": "companies",
+    "label": "World’s Biggest Public Companies",
+    "size": "60px",
+    "image": "./assets/img/apps/companies.png"
+  },
+  {
+    "name": "worldbank",
+    "label": "The World Bank",
+    "size": "50px",
+    "image": "./assets/img/apps/TheWorldBank2.png"
+  },
+  {
+    "name": "clock",
+    "label": "World Clock",
+    "size": "50px",
+    "image": "./assets/img/apps/clock.png"
+  },
+  {
+    "name": "coca-cola",
+    "label": "Coca-cola",
+    "size": "55px",
+    "image": "./assets/img/apps/coca-cola.png"
+  },
+  {
+    "name": "instagram",
+    "label": "Instagram",
+    "size": "48px",
+    "image": "./assets/img/apps/instagram.png"
+  },
+  {
+    "name": "iss",
+    "label": "ISS Tracker",
+    "size": "50px",
+    "image": "./assets/img/apps/iss.png"
+  },
+  {
+    "name": "itunes",
+    "label": "Itunes Charts",
+    "size": "55px",
+    "image": "./assets/img/apps/itunes.png"
+  },
+  {
+    "name": "twitter",
+    "label": "Twitter Trends",
+    "size": "42px",
+    "image": "./assets/img/apps/twitter.png"
+  },
+  {
+    "name": "soundcloud",
+    "label": "SoundCloud",
+    "size": "50px",
+    "image": "./assets/img/apps/soundcloud.png"
+  },
+  {
+    "name": "wikipedia",
+    "label": "Wikipedia",
+    "size": "50px",
+    "image": "./assets/img/apps/wikipedia.png"
+  }
+]

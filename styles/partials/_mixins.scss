@@ -1,0 +1,215 @@
+@mixin clearfix() {
+    &:before, &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+@mixin generate-grid(){
+    @for $i from 0 through 12 {
+        .col-def-#{$i} {
+            width: (100%/12) * $i;
+            display: inline-block;
+        }
+        .col-md-#{$i} {
+            @media screen and (max-width: 1286px) {
+                width: (100%/12) * $i;
+            }
+        }
+        .col-sm-#{$i} {
+            @media screen and (max-width: 1060px) {
+                width: (100%/12) * $i;
+            }
+        }
+        .col-xs-#{$i} {
+            @media screen and (max-width: 640px) {
+                width: (100%/12) * $i;
+            }
+        }
+    }
+}
+
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+    @font-face {
+        font-family: $font-family;
+        src: url('#{$file-path}.eot');
+        src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+            url('#{$file-path}.woff') format('woff'),
+            url('#{$file-path}.ttf') format('truetype'),
+            url('#{$file-path}.svg##{$font-family}') format('svg');
+        font-weight: $font-weight;
+        font-style: $font-style;
+    }
+    // Chrome for Windows rendering fix: http://www.adtrak.co.uk/blog/font-face-chrome-rendering/
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        @font-face {
+            font-family: $font-family;
+            src: url('#{$file-path}.svg##{$font-family}') format('svg');
+        }
+    }
+}
+
+@mixin transform($transforms){
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin rotate($deg){
+    @include transform(rotate(#{$deg}deg));
+}
+
+@mixin animation($animation){
+    -moz-animation: $animation;
+    -o-animation: $animation;
+    -ms-animation: $animation;
+    -webkit-animation: $animation;
+    animation: $animation;
+}
+@mixin scale($value){
+    @include transform(scale(#{$value}));
+}
+@mixin flexbox(){
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin inline-flex(){
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+@mixin flex($values){
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+@mixin align-center(){
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+@mixin flex-flow($display){
+    -webkit-flex-flow: $display;
+    -ms-flex-flow: $display;
+    flex-flow: $display;
+}
+@mixin justify-content($display){
+    -webkit-box-pack: justify;
+    -webkit-justify-content: $display;
+    -ms-flex-pack: justify;
+    justify-content: $display;
+}
+@mixin transition($transitions){
+    -webkit-transition: $transitions;
+    transition: $transitions;
+}
+@mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}
+}
+@mixin scrollbar($size, $foreground-color, $background-color, $border-radius, $border) {
+    ::-webkit-scrollbar {
+        width:  $size;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $background-color;
+        border-radius: $border-radius;
+        border: $border;
+    }
+    ::-webkit-scrollbar-track-piece {
+        background: $foreground-color;
+    }
+}
+@mixin unselect() {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    -o-user-select: none;
+    user-select: none;           /* Non-prefixed version, currently */
+}
+@mixin getRandomColor() {
+    $colors: red, orange, yellow, green, blue, purple;
+    background: lighten(nth($colors, random(length($colors))), 20%);
+}
+@mixin blur($pixel){
+    -webkit-filter: blur($pixel);
+    -moz-filter: blur($pixel);
+    -ms-filter: blur($pixel);
+    -o-filter: blur($pixel);
+    filter: blur($pixel);
+}
+@mixin hidden() {
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin border-top-radius($radius) {
+    border-top-right-radius: $radius;
+    border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+    border-bottom-left-radius: $radius;
+    border-top-left-radius: $radius;
+}
+@mixin size($width, $height) {
+    width: $width !important;
+    height: $height !important;
+}
+@mixin appearance($value){
+    -webkit-appearance: $value;
+    -moz-appearance: $value;
+    appearance: $value;
+}
+@mixin square($size) {
+    @include size($size, $size);
+}
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    filter: alpha(opacity=$opacity);
+}
+@mixin placeholder($color) {
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $color;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: $color;
+        opacity:  1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: $color;
+        opacity:  1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $color;
+    }
+}

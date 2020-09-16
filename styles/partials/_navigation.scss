@@ -1,0 +1,144 @@
+@import 'mixins';
+
+.menu-left-button {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-size: 68px;
+    cursor: pointer;
+    color: inherit;
+    z-index: 10000;
+
+    .hamburger {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        width: 30px;
+        height: 16px;
+
+        span {
+            background: #ffffff;
+            display: block;
+            margin-bottom: 7px;
+            height: 2px;
+
+            &:nth-of-type(2) {
+                width: 50%;
+            }
+
+            &:nth-of-type(3) {
+                width: 80%;
+            }
+        }
+    }
+}
+
+.navigation {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -90px;
+    margin: auto;
+    width: 80px;
+    padding: 0;
+    text-align: center;
+    background: black;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.6);
+    @include transition(left 0.5s ease);
+    @include transform(translateX(0));
+    z-index: 10000;
+
+    &:hover {
+        a > span:before {
+          @include transform(translateY(-12px));
+        }
+        a > span:after {
+          @include transform(translateY(12px));
+        }
+    }
+
+    &.show {
+        left: 0;
+        transition: left 0.5s ease;
+    }
+
+    ul {
+        margin-top: 40vh;
+        padding: 0;
+
+
+        li {
+            img {
+                height: 30px;
+                width: 30px;
+                border-radius: 100%;
+            }
+
+            icon {
+                display: block;
+                margin: 15px auto;
+                margin-bottom: 20px;
+                font-size: 32px;
+                opacity: .8;
+                cursor: pointer;
+                color: white;
+                text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+                @include transition( 0.5s ease-out);
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    a {
+        display: block;
+        position: absolute;
+        width: 30px;
+        top: calc(100% - 45px);
+        left: 50%;
+        @include transform(translate(-50%,-50%));
+
+        icon {
+            color: white;
+            font-size: 40px;
+        }
+
+        span {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 2px;
+            left: 0;
+            background: white;
+            opacity: 0.8;
+            @include transition(background .3s ease-in-out);
+
+            &:before {
+                @include transform(translateY(-10px));
+            }
+            &:after {
+                @include transform(translateY(10px));
+            }
+
+            &:before, &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 2px;
+                background: white;
+                opacity: 0.8;
+                -webkit-transform-origin: 50% 50%;
+                -ms-transform-origin: 50% 50%;
+                transform-origin: 50% 50%;
+                transition: -webkit-transform .3s ease-in-out,background .3s ease-in-out;
+                transition: transform .3s ease-in-out,background .3s ease-in-out;
+            }
+        }
+    }
+}
