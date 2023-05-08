@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/assets';
 
@@ -28,19 +27,30 @@ const config = [
           test: /\.(js|jsx)$/,
           include: path.resolve(__dirname, "scripts"),
           use: [
-            { loader: 'babel-loader' }
+            { 
+              loader: 'babel-loader', 
+              options: {
+               presets: ['@babel/preset-env'],
+              }, 
+            }
           ]
         },
         {
-          test: /\.(scss|sass|css)$/,
+          test: /\.css/,
           include: path.resolve(__dirname, "styles"),
-          use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: [
-              { loader: 'css-loader', options: { minimize: true } },
-              { loader: 'sass-loader' }
-            ]
-          })
+          use: [
+            "style-loader",
+            "css-loader"
+          ]
+        },
+        {
+          test: /\.(scss|sass)$/,
+          include: path.resolve(__dirname, "styles"),
+          use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader"
+          ]
         },
         {
           test: /\.json/,
@@ -50,7 +60,7 @@ const config = [
       ]
     },
     plugins: [
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
         filename: "css/app.min.css"
       })
     ]

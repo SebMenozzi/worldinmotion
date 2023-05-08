@@ -1,7 +1,4 @@
 import THREE from '../utils/three';
-// Promise polyfill for IE
-import { Promise } from 'es6-promise';
-
 import Helpers from '../utils/Helpers';
 import Config from '../../Config';
 
@@ -11,7 +8,7 @@ import ReactDOM from 'react-dom';
 
 import { UpdatePourcentage } from '../ui/LoadingUI.jsx'
 
-// This class preloads all textures in the imageFiles array in the Config via ES6 Promises.
+// This class preloads all textures in the imageFiles array in the Config
 // Once all textures are done loading the model itself will be loaded after the Promise .then() callback.
 // Using promises to preload textures prevents issues when applying textures to materials
 // before the textures have loaded.
